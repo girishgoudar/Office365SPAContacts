@@ -1,0 +1,21 @@
+﻿<table>
+    <thead>
+        <tr>
+            <th>FirstName</th>
+            <th>LastName</th>
+            <th>Edit</th>
+            <th>Delete</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr ng-repeat="contact in contacts">
+            <td data-title="FirstName">{{ contact.GivenName }}</td>
+            <td data-title="LastName">{{ contact.Surname }}</td>
+            <td data-title="Edit" class="numeric"><input type="button" value="Edit" ng-click="editUser(contact.Id)" /></td>
+            <td data-title="Delete" class="numeric"><input type="button" value="Delete" ng-click="deleteUser(contact.Id)" /></td>
+        </tr>
+    </tbody>
+</table>
+
+<a href="/#/contacts/new">Add new contact</a>
+
