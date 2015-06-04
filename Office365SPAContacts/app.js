@@ -64,7 +64,15 @@ o365CorsApp.controller("ContactsNewController", function ($scope, $q,$http,$loca
     $scope.add = function () {
         var givenname = $scope.givenname
         var surname = $scope.surname
-        contact = { "GivenName": givenname, "Surname": surname }
+        var email = $scope.email
+
+        var emaildata = {
+            EmailAddresses: {
+                "Address": email,
+                "Name": email,
+            }
+        };
+        contact = { "GivenName": givenname, "Surname": surname, emaildata }
         var options = {
             url: "https://outlook.office365.com/api/v1.0/me/contacts",
             method: 'POST',
@@ -94,8 +102,17 @@ o365CorsApp.controller("ContactsEditController", function ($scope, $q, $http, $l
     $scope.update = function () {
         var givenname = $scope.contact.GivenName
         var surname = $scope.contact.Surname
+        var email = $scope.contact.EmailAddresses
         var id = ShareData.value;
-        contact = { "GivenName": givenname, "Surname": surname }
+
+        var emaildata = {
+            EmailAddresses: {
+                "Address": email,
+                "Name": email,
+            }
+        };
+
+        contact = { "GivenName": givenname, "Surname": surname, emaildata }
         var options = {
             url: "https://outlook.office365.com/api/v1.0/me/contacts/"+id,
             method: 'PATCH',

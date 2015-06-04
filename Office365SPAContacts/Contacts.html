@@ -1,21 +1,25 @@
-﻿<table>
-    <thead>
-        <tr>
-            <th>FirstName</th>
-            <th>LastName</th>
-            <th>Edit</th>
-            <th>Delete</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr ng-repeat="contact in contacts">
-            <td data-title="FirstName">{{ contact.GivenName }}</td>
-            <td data-title="LastName">{{ contact.Surname }}</td>
-            <td data-title="Edit" class="numeric"><input type="button" value="Edit" ng-click="editUser(contact.Id)" /></td>
-            <td data-title="Delete" class="numeric"><input type="button" value="Delete" ng-click="deleteUser(contact.Id)" /></td>
-        </tr>
-    </tbody>
-</table>
-
+﻿<div>
+    <h2>Contacts</h2>
+    <table border="1">
+        <thead>
+            <tr>
+                <th width="20%">FirstName</th>
+                <th width="20%">LastName</th>
+                <th width="20%">Email</th>
+                <th width="20%">Edit</th>
+                <th width="20%">Delete</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="contact in contacts">
+                <td data-title="FirstName" align="center">{{ contact.GivenName }}</td>
+                <td data-title="LastName" align="center">{{ contact.Surname }}</td>
+                <td data-title="Mail" align="center">{{ contact.EmailAddresses }}</td>
+                <td data-title="Edit" align="center"><input type="button" value="Edit" ng-click="editUser(contact.Id)" /></td>
+                <td data-title="Delete" align="center"><input type="button" value="Delete" ng-click="deleteUser(contact.Id)" /></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
 <a href="/#/contacts/new">Add new contact</a>
 

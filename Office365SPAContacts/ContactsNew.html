@@ -1,21 +1,25 @@
 ﻿<div>
     <h2>New Contacts</h2>
-    <table>
+    <table border="1">
         <thead>
             <tr>
-                <th>FirstName</th>
-                <th>LastName</th>
+                <th width="33%">FirstName</th>
+                <th width="33%">LastName</th>
+                <th width="33%">Email</th>
             </tr>
         </thead>
         <tbody>
             <tr>
-                <td>
+                <td align="center">
                     <input ng-model="givenname" class="form-control" />
                 </td>
-                <td>
+                <td align="center">
                     <input ng-model="surname" class="form-control"/>
                 </td>
-                <td>
+                <td align="center">
+                    <input ng-model="email" class="form-control" />
+                </td>
+                <td align="center">
                     <span class="input-group-btn">
                         <button ng-click="add()" class="btn btn-default">Add</button>
                     </span>
