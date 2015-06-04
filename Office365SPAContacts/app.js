@@ -62,17 +62,17 @@ o365CorsApp.controller("ContactsController", function ($scope, $q, $location, $h
 });
 o365CorsApp.controller("ContactsNewController", function ($scope, $q,$http,$location) {
     $scope.add = function () {
-        var givenname = $scope.givenname
-        var surname = $scope.surname
+        var givenName = $scope.givenName
+        var surName = $scope.surName
         var email = $scope.email
-
-        var emaildata = {
-            EmailAddresses: {
-                "Address": email,
-                "Name": email,
-            }
-        };
-        contact = { "GivenName": givenname, "Surname": surname, emaildata }
+        contact = { "GivenName": givenName, "Surname": surName, "EmailAddresses": [
+             {
+                 "Address": email,
+                 "Name": givenName
+             }
+        ]
+        }
+        
         var options = {
             url: "https://outlook.office365.com/api/v1.0/me/contacts",
             method: 'POST',
@@ -100,19 +100,19 @@ o365CorsApp.controller("ContactsEditController", function ($scope, $q, $http, $l
         });
     }
     $scope.update = function () {
-        var givenname = $scope.contact.GivenName
-        var surname = $scope.contact.Surname
-        var email = $scope.contact.EmailAddresses
+        var givenName = $scope.contact.GivenName
+        var surName = $scope.contact.Surname
+        var email = $scope.contact.EmailAddresses[0].Address
         var id = ShareData.value;
 
-        var emaildata = {
-            EmailAddresses: {
+       
+        contact = { "GivenName": givenName, "Surname": surName, "EmailAddresses": [
+            {
                 "Address": email,
-                "Name": email,
+                "Name": givenName
             }
-        };
-
-        contact = { "GivenName": givenname, "Surname": surname, emaildata }
+            ]
+        }
         var options = {
             url: "https://outlook.office365.com/api/v1.0/me/contacts/"+id,
             method: 'PATCH',

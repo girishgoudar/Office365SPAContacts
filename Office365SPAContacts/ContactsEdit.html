@@ -3,8 +3,9 @@
     <table border="1">
         <thead>
             <tr>
-                <th width="25%">FirstName</th>
-                <th width="25%">LastName</th>
+                <th width="33%">FirstName</th>
+                <th width="33%">LastName</th>
+                <th width="33%">Email</th>
             </tr>
         </thead>
         <tbody>
@@ -16,7 +17,7 @@
                     <input ng-model="contact.Surname" class="form-control" />
                 </td>
                 <td align="center">
-                    <input ng-model="contact.EmailAddresses" class="form-control" />
+                    <input ng-model="contact.EmailAddresses[0].Address" class="form-control" />
                 </td>
                 <td align="center">
                     <span class="input-group-btn">
