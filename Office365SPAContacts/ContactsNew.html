@@ -1,30 +1,41 @@
 ﻿<div>
     <h2>New Contacts</h2>
-    <table border="1">
-        <thead>
-            <tr>
-                <th width="33%">FirstName</th>
-                <th width="33%">LastName</th>
-                <th width="33%">Email</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td align="center">
-                    <input ng-model="givenName" class="form-control" />
-                </td>
-                <td align="center">
-                    <input ng-model="surName" class="form-control"/>
-                </td>
-                <td align="center">
+   
+                <div align="center">
+                    FirstName:<div align="center">
+                        <input ng-model="givenName" class="form-control" />
+                    </div>
+                </div>
+               
+                <div align="center">
+                    LastName
+                </div>
+                <div align="center">
+                    <input ng-model="surName" class="form-control" />
+                </div>
+              
+                <div align="center">
+                    Email
+                </div>
+                <div align="center">
                     <input ng-model="email" class="form-control" />
-                </td>
-                <td align="center">
-                    <span class="input-group-btn">
-                        <button ng-click="add()" class="btn btn-default">Add</button>
-                    </span>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-</div>
+                </div>
+       
+        <span class="input-group-btn">
+            <button ng-click="add()" class="btn btn-default">Add</button>
+        </span>
+    </div>
+
+
+<h2>New Contacts</h2> 
+<div class="rTable"> 
+<div class="rTableRow">
+<div class="rTableHead"><strong>Name</strong></div>
+<div class="rTableHead"><span style="font-weight: bold;">Telephone</span></div>
+<div class="rTableHead">&nbsp;</div> </div> <div class="rTableRow">
+<div class="rTableCell">John</div>
+<div class="rTableCell"><a href="tel:0123456785">0123 456 785</a></div>
+<div class="rTableCell"><img src="images/check.gif" alt="checked" /></div>
+</div> <div class="rTableRow"> <div class="rTableCell">Cassie</div>
+<div class="rTableCell"><a href="tel:9876532432">9876 532 432</a></div>
+<div class="rTableCell"><img src="images/check.gif" alt="checked" /></div> </div> </div>
