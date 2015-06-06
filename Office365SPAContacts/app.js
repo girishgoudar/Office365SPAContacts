@@ -51,12 +51,12 @@ o365CorsApp.controller("ContactsController", function ($scope, $q, $location, $h
             $scope.contacts = response.data.value;
         });
     };
-    $scope.editUser = function (username) {
-        ShareData.value = username;
+    $scope.editUser = function (userName) {
+        ShareData.value = userName;
         $location.path('/contacts/edit');
     };
-    $scope.deleteUser = function (contactid) {
-        ShareData.value = contactid;
+    $scope.deleteUser = function (contactId) {
+        ShareData.value = contactId;
         $location.path('/contacts/delete');
     };
 });
@@ -132,15 +132,9 @@ o365CorsApp.controller("ContactsEditController", function ($scope, $q, $http, $l
 });
 o365CorsApp.controller("ContactsDeleteController", function ($scope, $q, $http, $location, ShareData) {
     var id = ShareData.value;
-    getContact();
-    function getContact() {
-        $http.get("https://outlook.office365.com/api/v1.0/me/contacts/"+id)
-        .then(function (response) {
-            $scope.contact = response.data;
-        });
-       
-        var id = ShareData.value;
-        var options = {
+    deleteContact();
+    function deleteContact() {
+       var options = {
             url: "https://outlook.office365.com/api/v1.0/me/contacts/"+id,
             method: 'DELETE',
             headers: {
