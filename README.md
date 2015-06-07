@@ -42,8 +42,8 @@ After you're signed in, you will see a list of all the services.
 Initially, no permissions will be selected, as the app is not registered to consume any services yet.
 Select Users and Groups and then click Permissions
 In the Users and Groups Permissions dialog, select Enable sign-on and read users profiles' and click Apply
-Select My Files and then click Permissions
-In the My Files Permissions dialog, select both Read users' files and Edit or delete users' files then click Apply
+Select Contacts and then click Permissions
+In the Contact Permissions dialog, select both Read and write user contacts and Read user contacts then click Apply
 Click Ok
 After clicking OK, Office 365 client libraries (in the form of NuGet packages) for connecting to Office 365 APIs will be added to your project.
 
@@ -86,7 +86,6 @@ In the Debug Toolbar, select to run with Google Chrome instead of Internet Explo
 
 Note: This sample only works on current versions of Chrome and Firefox. A separate patch is required to be installed if you want to try this out in Internet Explorer. Links to the patch will be added soon.
 
-You can trigger the sign in experience by either clicking on the Login link on the top right corner, or by clicking directly on the My Files tab. To see a list of files stored on OneDrive click on the My Files tab. To view the properties of a file or folder, click on the properties link displayed right next to the file name and the properties will be displayed at the bottom of MyFiles list.
 
 Step 5: Deploy This Sample To Azure Website
 
@@ -97,7 +96,7 @@ Select Publish.
 On the Publish Web wizard, select Microsoft Azure Websites.
 Sign into your azure subscription if your are not currently signed in.
 On the "Select Existing Website" dialog, click New....
-Enter a site name, for example "Office365CORS".
+Enter a site name, for example "Office365SPAContacts".
 Select a Region.
 Let Database server be set to "No database".
 Click Create.
