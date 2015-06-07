@@ -1,15 +1,12 @@
 Office 365 Contacts Single Page Application using VisualStudio
+
 This sample shows how to build a AngularJS Single Page Application using Visual Studio for office 365 Contacts API 
-
 ADAL for Javascript is an open source library. For distribution options, source code, and contributions, check out the ADAL JS repo at https://github.com/AzureAD/azure-activedirectory-library-for-js.
-
 How To Run This Sample
-
 To run this sample, you need:
-
-Visual Studio 2013
-Office Developer Tools for Visual Studio 2013
-Office 365 Developer Subscription
+•	Visual Studio 2013
+•	Office Developer Tools for Visual Studio 2013
+•	Office 365 Developer Subscription
 Step 1: Clone the application in Visual Studio
 
 Visual Studio 2013 supports connecting to Git servers. As the project templates are hosted in GitHub, Visual Studio 2013 makes it easier to clone projects from GitHub.
