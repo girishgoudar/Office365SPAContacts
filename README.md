@@ -86,10 +86,12 @@ Select Contacts and then click Permissions
 In the Contact Permissions dialog, select both Read and write user contacts and Read user contacts then click Apply
 </li>
 <li>
-Click Ok.After clicking OK, Office 365 client libraries (in the form of NuGet packages) for connecting to Office 365 APIs will be added to your project.
-In this process, Office 365 API tool registered an Azure AD Application in the Office 365 tenant that you signed in the wizard and added the Azure AD application details to web.config.
+Click Ok.
 </li>
 </ul>
+
+After clicking OK, Office 365 client libraries (in the form of NuGet packages) for connecting to Office 365 APIs will be added to your project.
+In this process, Office 365 API tool registered an Azure AD Application in the Office 365 tenant that you signed in the wizard and added the Azure AD application details to web.config.
 
 <h4>Update web.config with your Tenant ID</h4>
 
