@@ -135,7 +135,7 @@ Log in to your Azure Portal and select your Office 365 domain directory.
 Click on the Applications tab.
 </li>
 <li>
-Paste the ClientID which was copied from web.config into the search box and trigger search. Now select "Office365CORS.Office365App" application from the results list.
+Paste the ClientID which was copied from web.config into the search box and trigger search. Now select "office365spacontacts.office365app" application from the results list.
 </li>
 <li>
 Using the Manage Manifest button in the drawer, download the manifest file for the application and save it to disk.
