@@ -47,26 +47,47 @@ Switch to Solution Explorer.
 
 <h2>Step 2: Configure the sample</h2>
 
-Build the Project
+<h4>Build the Project</h4>
 
 Simply Build the project to restore NuGet packages.
 
-Register Azure AD application to consume Office 365 APIs
+<h4>Register Azure AD application to consume Office 365 APIs</h4>
 
 Office 365 applications use Azure Active Directory (Azure AD) to authenticate and authorize users and applications respectively. All users, application registrations, permissions are stored in Azure AD.
 
 Using the Office 365 API Tool for Visual Studio you can configure your web application to consume Office 365 APIs.
 
+<ul>
+<li>
 In the Solution Explorer window, right click your project -> Add -> Connected Service.
+</li>
+<li>
 A Services Manager dialog box will appear. Choose Office 365 -> Office 365 API and click Register your app.
+</li>
+<li>
 On the sign-in dialog box, enter the username and password for your Office 365 tenant.
+</li>
+<li>
 After you're signed in, you will see a list of all the services.
+</li>
+<li>
 Initially, no permissions will be selected, as the app is not registered to consume any services yet.
+</li>
+<li>
 Select Users and Groups and then click Permissions
+</li>
+<li>
 In the Users and Groups Permissions dialog, select Enable sign-on and read users profiles' and click Apply
+</li>
+<li>
 Select Contacts and then click Permissions
+</li>
+<li>
 In the Contact Permissions dialog, select both Read and write user contacts and Read user contacts then click Apply
+</li>
+<li>
 Click Ok
+</li>
 After clicking OK, Office 365 client libraries (in the form of NuGet packages) for connecting to Office 365 APIs will be added to your project.
 
 In this process, Office 365 API tool registered an Azure AD Application in the Office 365 tenant that you signed in the wizard and added the Azure AD application details to web.config.
