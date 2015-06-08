@@ -35,7 +35,7 @@ o365CorsApp.config(['$routeProvider', '$httpProvider', 'adalAuthenticationServic
 
     var adalConfig = {
         tenant: '5b532de2-3c90-4e6b-bf85-db0ed9cf5b48',
-        clientId: 'b1755e1c-cc33-4555-a608-8c2602ddd8d1',
+        clientId: '2b775a7e-0f86-45a6-9757-5f1903db9fd6',
         extraQueryParameter: 'nux=1',
         endpoints: {
            "https://outlook.office365.com/api/v1.0": "https://outlook.office365.com/"
