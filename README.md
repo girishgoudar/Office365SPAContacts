@@ -127,12 +127,25 @@ Replace the value of clientId with the ClientId from web.config.
 
 By default, applications provisioned in Azure AD are not enabled to use the OAuth2 implicit grant. In order to run this sample, you need to explicitly opt in.
 
+<ul>
+<li>
 Log in to your Azure Portal and select your Office 365 domain directory.
+</li>
+<li>
 Click on the Applications tab.
+</li>
+<li>
 Paste the ClientID which was copied from web.config into the search box and trigger search. Now select "Office365CORS.Office365App" application from the results list.
+</li>
+<li>
 Using the Manage Manifest button in the drawer, download the manifest file for the application and save it to disk.
+</li>
+<li>
 Open the manifest file with a text editor. Search for the oauth2AllowImplicitFlow property. You will find that it is set to false; change it to true and save the file.
+</li>
+<li>
 Using the Manage Manifest button, upload the updated manifest file. Save the configuration of the app.
+</li>
 
 <h2>Step 4: Run the sample</h2>
 
