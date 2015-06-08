@@ -4,10 +4,17 @@ This sample shows how to build a AngularJS Single Page Application using Visual 
 ADAL for Javascript is an open source library. For distribution options, source code, and contributions, check out the ADAL JS repo at https://github.com/AzureAD/azure-activedirectory-library-for-js.
 How To Run This Sample
 To run this sample, you need:
-
-•	Visual Studio 2013
-•	Office Developer Tools for Visual Studio 2013
-•	Office 365 Developer Subscription
+<ul>
+<li>
+Visual Studio 2013
+</li>
+<li>
+Office Developer Tools for Visual Studio 2013
+</li>
+<li>
+Office 365 Developer Subscription
+</li>
+</ul>
 
 <h2>Step 1: Clone the application in Visual Studio</h2>
 
