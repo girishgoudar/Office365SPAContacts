@@ -87,7 +87,9 @@ In the Contact Permissions dialog, select both Read and write user contacts and 
 </li>
 <li>
 Click Ok
-</li>After clicking OK, Office 365 client libraries (in the form of NuGet packages) for connecting to Office 365 APIs will be added to your project.
+</li>
+<ul>
+After clicking OK, Office 365 client libraries (in the form of NuGet packages) for connecting to Office 365 APIs will be added to your project.
 
 In this process, Office 365 API tool registered an Azure AD Application in the Office 365 tenant that you signed in the wizard and added the Azure AD application details to web.config.
 <h4>Update web.config with your Tenant ID</h4>
@@ -118,6 +120,7 @@ Open the file App/Scripts/app.js and locate the line adalProvider.init(.
 <li>
 Replace the value of clientId with the ClientId from web.config.
 </li>
+</ul>
 
 <h2>Step 3: Enable the OAuth2 implicit grant for your application</h2>
 
