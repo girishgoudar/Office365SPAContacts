@@ -92,7 +92,7 @@ After clicking OK, Office 365 client libraries (in the form of NuGet packages) f
 
 In this process, Office 365 API tool registered an Azure AD Application in the Office 365 tenant that you signed in the wizard and added the Azure AD application details to web.config.
 
-Update web.config with your Tenant ID
+<h4>Update web.config with your Tenant ID</h4>
 
 In your web.config, update the TenantId value to your Office 365 tenant Id where the application is deployed.
 
@@ -103,14 +103,23 @@ Note: If you are unable to login to Azure Portal using your Office 365 credentia
 
 Now, in the browser URL, locate the GUID. This will be your Office 365 tenant Id.
 Copy and paste it in the web.config where it says “paste-your-tenant-guid-here“ :
-Note: If you are deploying to a production tenant, you will need to ask your tenant admin for the tenant identifier.
+<b>Note:</b> If you are deploying to a production tenant, you will need to ask your tenant admin for the tenant identifier.
 
-Update app.js with your Client ID
+<h4>Update app.js with your Client ID</h4>
 
+<ul>
+<li>
 Open the web.config file.
+</li>
+<li>
 Find the app key ida:ClientID and copy the value.
+</li>
+<li>
 Open the file App/Scripts/app.js and locate the line adalProvider.init(.
+</li>
+<li>
 Replace the value of clientId with the ClientId from web.config.
+</li>
 
 <h2>Step 3: Enable the OAuth2 implicit grant for your application</h2>
 
