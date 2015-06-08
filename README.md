@@ -146,7 +146,7 @@ Open the manifest file with a text editor. Search for the oauth2AllowImplicitFlo
 <li>
 Using the Manage Manifest button, upload the updated manifest file. Save the configuration of the app.
 </li>
-
+</ul>
 <h2>Step 4: Run the sample</h2>
 
 Clean the solution, rebuild the solution, and run it.
