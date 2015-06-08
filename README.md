@@ -21,14 +21,29 @@ Office 365 Developer Subscription
 Visual Studio 2013 supports connecting to Git servers. As the project templates are hosted in GitHub, Visual Studio 2013 makes it easier to clone projects from GitHub.
 
 The steps below will describe how to clone Office 365 API web application project in Visual Studio from Office Developer GitHub.
-
+<ul>
+<li>
 Open Visual Studio 2013.
+</li>
+<li>
 Switch to Team Explorer.
+</li>
+<li>
 Team Explorer provides options to clone Git repositories.
+</li>
+<li>
 Click Clone under Local Git Repositories, enter the clone URL https://github.com/girishgoudar/Office365SPAContacts.git for the web application project and click Clone.
+</li>
+<li>
 Once the project is cloned, double click on the repo.
+</li>
+<li>
 Double click the project solution which is available under Solutions.
+</li>
+<li>
 Switch to Solution Explorer.
+</li>
+</ul>
 
 <h2>Step 2: Configure the sample</h2>
 
