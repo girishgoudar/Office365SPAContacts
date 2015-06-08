@@ -1,13 +1,15 @@
-Office 365 Contacts Single Page Application using VisualStudio
+<b>Office 365 Contacts Single Page Application using VisualStudio</b>
 
 This sample shows how to build a AngularJS Single Page Application using Visual Studio for office 365 Contacts API 
 ADAL for Javascript is an open source library. For distribution options, source code, and contributions, check out the ADAL JS repo at https://github.com/AzureAD/azure-activedirectory-library-for-js.
 How To Run This Sample
 To run this sample, you need:
+
 •	Visual Studio 2013
 •	Office Developer Tools for Visual Studio 2013
 •	Office 365 Developer Subscription
-Step 1: Clone the application in Visual Studio
+
+<h2>Step 1: Clone the application in Visual Studio</h2>
 
 Visual Studio 2013 supports connecting to Git servers. As the project templates are hosted in GitHub, Visual Studio 2013 makes it easier to clone projects from GitHub.
 
@@ -20,7 +22,8 @@ Click Clone under Local Git Repositories, enter the clone URL https://github.com
 Once the project is cloned, double click on the repo.
 Double click the project solution which is available under Solutions.
 Switch to Solution Explorer.
-Step 2: Configure the sample
+
+<h2>Step 2: Configure the sample</h2>
 
 Build the Project
 
@@ -65,7 +68,8 @@ Open the web.config file.
 Find the app key ida:ClientID and copy the value.
 Open the file App/Scripts/app.js and locate the line adalProvider.init(.
 Replace the value of clientId with the ClientId from web.config.
-Step 3: Enable the OAuth2 implicit grant for your application
+
+<h2>Step 3: Enable the OAuth2 implicit grant for your application</h2>
 
 By default, applications provisioned in Azure AD are not enabled to use the OAuth2 implicit grant. In order to run this sample, you need to explicitly opt in.
 
@@ -75,7 +79,8 @@ Paste the ClientID which was copied from web.config into the search box and trig
 Using the Manage Manifest button in the drawer, download the manifest file for the application and save it to disk.
 Open the manifest file with a text editor. Search for the oauth2AllowImplicitFlow property. You will find that it is set to false; change it to true and save the file.
 Using the Manage Manifest button, upload the updated manifest file. Save the configuration of the app.
-Step 4: Run the sample
+
+<h2>Step 4: Run the sample</h2>
 
 Clean the solution, rebuild the solution, and run it.
 
@@ -83,26 +88,3 @@ In the Debug Toolbar, select to run with Google Chrome instead of Internet Explo
 
 Note: This sample only works on current versions of Chrome and Firefox. A separate patch is required to be installed if you want to try this out in Internet Explorer. Links to the patch will be added soon.
 
-
-Step 5: Deploy This Sample To Azure Website
-
-To deploy this sample application to azure website, we will first create a new website on Azure then import the publish profile
-
-Right Click on Office365SPAContacts project node in Solution Explorer.
-Select Publish.
-On the Publish Web wizard, select Microsoft Azure Websites.
-Sign into your azure subscription if your are not currently signed in.
-On the "Select Existing Website" dialog, click New....
-Enter a site name, for example "Office365SPAContacts".
-Select a Region.
-Let Database server be set to "No database".
-Click Create.
-In Connection tab, make sure that Publish method is "Web Deploy". Click Next.
-In Settings tab, un-check the Enable Organizational Authentication checkbox to disable it.
-NOTE: Check this option if you are deploying your Azure AD application to a different domain than the one used to build your web application. In this sample, we are deploying to the same domain for testing.
-Click Publish.
-Sign in to the Azure management portal.
-Select the newly created website and click on Configure tab.
-Scroll down to Authentication / Authorization and click Configure.
-On the "Configure Azure Wedsites Authentication / Authorization" dialog, select the Directory in which the sample app was registered and from the AAD Application drop down list, select "Office365CORS.Office365App (https://localhost:44304/)". Click OK.
-The sample application will now be published to "[websiteURL].azurewebsites.net".
