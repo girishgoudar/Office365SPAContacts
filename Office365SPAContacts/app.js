@@ -43,14 +43,11 @@ o365CorsApp.config(['$routeProvider', '$httpProvider', 'adalAuthenticationServic
     };
     adalProvider.init(adalConfig, $httpProvider);
 }]);
-o365CorsApp.controller("ContactsController", function ($scope, $q, $location, $http, ShareData) {
-    getContact();
-    function getContact() {
-        $http.get('https://outlook.office365.com/api/v1.0/me/contacts')
-        .then(function (response) {
-            $scope.contacts = response.data.value;
-        });
-    };
+o365CorsApp.controller("ContactsController", function ($scope, $q, $location, $http, ShareData, o365CorsFactory) {
+    o365CorsFactory.getContacts().then(function (response) {
+        $scope.contacts = response.data.value;
+    });
+
     $scope.editUser = function (userName) {
         ShareData.value = userName;
         $location.path('/contacts/edit');
@@ -60,21 +57,112 @@ o365CorsApp.controller("ContactsController", function ($scope, $q, $location, $h
         $location.path('/contacts/delete');
     };
 });
-o365CorsApp.controller("ContactsNewController", function ($scope, $q,$http,$location) {
-    $scope.add = function () {
-        var givenName = $scope.givenName
-        var surName = $scope.surName
-        var email = $scope.email
-        contact = { "GivenName": givenName, "Surname": surName, "EmailAddresses": [
-             {
-                 "Address": email,
-                 "Name": givenName
-             }
-        ]
-        }
-        
+o365CorsApp.controller("ContactsNewController", function ($scope, $q, $http, $location, o365CorsFactory) {
+    var givenName = $scope.givenName
+    var surName = $scope.surName
+    var email = $scope.email
+    contact = { "GivenName": givenName, "Surname": surName, "EmailAddresses": [
+            {
+                "Address": email,
+                "Name": givenName
+            }
+    ]
+    }
+
+    o365CorsFactory.insertContact().then(function (contact) {
+        $location.path("/#");
+    });
+});
+o365CorsApp.controller("ContactsEditController", function ($scope, $q, $http, $location, ShareData, o365CorsFactory) {
+    var id = ShareData.value;
+    //getContact();
+    //function getContact() {
+    //    $http.get("https://outlook.office365.com/api/v1.0/me/contacts/"+id)
+    //    .then(function (response) {
+    //        $scope.contact = response.data;
+    //    });
+    //}
+    //alert(id);
+    o365CorsFactory.getContact(id).then(function (response) {
+        $scope.contact = response.data;
+    });
+
+    var givenName = $scope.contact.GivenName
+    //var surName = $scope.contact.Surname
+    //var email = $scope.contact.EmailAddresses[0].Address
+   
+
+    //contact = {
+    //    "GivenName": givenName, "Surname": surName, "EmailAddresses": [
+    //            {
+    //                "Address": email,
+    //                "Name": givenName
+    //            }
+    //    ]
+    //}
+
+    //o365CorsFactory.updateContact(contact, id).then(function () {
+    //    $location.path("/#");
+    //});
+
+    //$scope.update = function () {
+    //    var options = {
+    //        url: "https://outlook.office365.com/api/v1.0/me/contacts/"+id,
+    //        method: 'PATCH',
+    //        data: JSON.stringify(contact),
+    //        headers: {
+    //            'Accept': 'application/json',
+    //            'Content-Type': 'application/json'
+    //        },
+    //    };
+    //    return $http(options).then(function (result) {
+    //        $location.path("/");
+    //    },
+    //    function (error) {
+    //        return error;
+    //    });
+    //};
+});
+o365CorsApp.controller("ContactsDeleteController", function ($scope, $q, $http, $location, ShareData, o365CorsFactory) {
+    var id = ShareData.value;
+    //deleteContact();
+    //function deleteContact() {
+    //   var options = {
+    //        url: "https://outlook.office365.com/api/v1.0/me/contacts/"+id,
+    //        method: 'DELETE',
+    //        headers: {
+    //            'Accept': 'application/json',
+    //            'Content-Type': 'application/json'
+    //        },
+    //    };
+
+    o365CorsFactory.deleteContact().then(function (id) {
+        $location.path("/#");
+    });
+
+    //    return $http(options).then(function (result) {
+    //        $location.path("/#");
+    //    },
+    //    function (error) {
+    //        return error;
+    //    });
+    //}
+});
+
+o365CorsApp.factory('o365CorsFactory', ['$http', function ($http) {
+    var factory = {};
+   
+    factory.getContacts = function () {
+        return $http.get('https://outlook.office365.com/api/v1.0/me/contacts')
+    }
+
+    factory.getContact = function (id) {
+        return $http.get('https://outlook.office365.com/api/v1.0/me/contacts/'+id)
+    }
+
+    factory.insertContact = function (contact) {
         var options = {
-            url: "https://outlook.office365.com/api/v1.0/me/contacts",
+            url: 'https://outlook.office365.com/api/v1.0/me/contacts',
             method: 'POST',
             data: JSON.stringify(contact),
             headers: {
@@ -82,39 +170,11 @@ o365CorsApp.controller("ContactsNewController", function ($scope, $q,$http,$loca
                 'Content-Type': 'application/json'
             },
         };
-        return $http(options).then(function (result) {
-            $location.path("/#");
-        },
-        function (error) {
-            return error;
-        });
-    };
-});
-o365CorsApp.controller("ContactsEditController", function ($scope, $q, $http, $location, ShareData) {
-    var id = ShareData.value;
-    getContact();
-    function getContact() {
-        $http.get("https://outlook.office365.com/api/v1.0/me/contacts/"+id)
-        .then(function (response) {
-            $scope.contact = response.data;
-        });
     }
-    $scope.update = function () {
-        var givenName = $scope.contact.GivenName
-        var surName = $scope.contact.Surname
-        var email = $scope.contact.EmailAddresses[0].Address
-        var id = ShareData.value;
 
-       
-        contact = { "GivenName": givenName, "Surname": surName, "EmailAddresses": [
-            {
-                "Address": email,
-                "Name": givenName
-            }
-            ]
-        }
-        var options = {
-            url: "https://outlook.office365.com/api/v1.0/me/contacts/"+id,
+    factory.updateContact = function (contact,id) {
+        return options = {
+            url: 'https://outlook.office365.com/api/v1.0/me/contacts/'+id,
             method: 'PATCH',
             data: JSON.stringify(contact),
             headers: {
@@ -122,35 +182,23 @@ o365CorsApp.controller("ContactsEditController", function ($scope, $q, $http, $l
                 'Content-Type': 'application/json'
             },
         };
-        return $http(options).then(function (result) {
-            $location.path("/");
-        },
-        function (error) {
-            return error;
-        });
-    };
-});
-o365CorsApp.controller("ContactsDeleteController", function ($scope, $q, $http, $location, ShareData) {
-    var id = ShareData.value;
-    deleteContact();
-    function deleteContact() {
-       var options = {
-            url: "https://outlook.office365.com/api/v1.0/me/contacts/"+id,
+    }
+
+    factory.deleteContact = function (id) {
+        return options = {
+            url: 'https://outlook.office365.com/api/v1.0/me/contacts/'+id,
             method: 'DELETE',
             headers: {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json'
             },
         };
-
-        return $http(options).then(function (result) {
-            $location.path("/#");
-        },
-        function (error) {
-            return error;
-        });
+        
     }
-});
+
+    return factory;
+}]);
+
 
 
 
