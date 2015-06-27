@@ -35,7 +35,7 @@ o365CorsApp.config(['$routeProvider', '$httpProvider', 'adalAuthenticationServic
 
     var adalConfig = {
         tenant: '5b532de2-3c90-4e6b-bf85-db0ed9cf5b48',
-        clientId: '2b775a7e-0f86-45a6-9757-5f1903db9fd6',
+        clientId: '1cdf3582-12e3-405d-8ea3-315bda8df207',
         extraQueryParameter: 'nux=1',
         endpoints: {
            "https://outlook.office365.com/api/v1.0": "https://outlook.office365.com/"
@@ -58,98 +58,61 @@ o365CorsApp.controller("ContactsController", function ($scope, $q, $location, $h
     };
 });
 o365CorsApp.controller("ContactsNewController", function ($scope, $q, $http, $location, o365CorsFactory) {
-    var givenName = $scope.givenName
-    var surName = $scope.surName
-    var email = $scope.email
-    contact = { "GivenName": givenName, "Surname": surName, "EmailAddresses": [
-            {
-                "Address": email,
-                "Name": givenName
-            }
-    ]
-    }
+    $scope.add = function () {
+        var givenName = $scope.givenName
+        var surName = $scope.surName
+        var email = $scope.email
+        contact = {
+            "GivenName": givenName, "Surname": surName, "EmailAddresses": [
+                    {
+                        "Address": email,
+                        "Name": givenName
+                    }
+            ]
+        }
 
-    o365CorsFactory.insertContact().then(function (contact) {
-        $location.path("/#");
-    });
+        o365CorsFactory.insertContact(contact).then(function () {
+            $location.path("/#");
+        });
+    }
 });
 o365CorsApp.controller("ContactsEditController", function ($scope, $q, $http, $location, ShareData, o365CorsFactory) {
     var id = ShareData.value;
-    //getContact();
-    //function getContact() {
-    //    $http.get("https://outlook.office365.com/api/v1.0/me/contacts/"+id)
-    //    .then(function (response) {
-    //        $scope.contact = response.data;
-    //    });
-    //}
-    //alert(id);
+
     o365CorsFactory.getContact(id).then(function (response) {
         $scope.contact = response.data;
     });
-
-    var givenName = $scope.contact.GivenName
-    //var surName = $scope.contact.Surname
-    //var email = $scope.contact.EmailAddresses[0].Address
    
+    $scope.update = function () {
 
-    //contact = {
-    //    "GivenName": givenName, "Surname": surName, "EmailAddresses": [
-    //            {
-    //                "Address": email,
-    //                "Name": givenName
-    //            }
-    //    ]
-    //}
+        var givenName = $scope.contact.GivenName
+        var surName = $scope.contact.Surname
+        var email = $scope.contact.EmailAddresses[0].Address
+        var id = ShareData.value;
 
-    //o365CorsFactory.updateContact(contact, id).then(function () {
-    //    $location.path("/#");
-    //});
-
-    //$scope.update = function () {
-    //    var options = {
-    //        url: "https://outlook.office365.com/api/v1.0/me/contacts/"+id,
-    //        method: 'PATCH',
-    //        data: JSON.stringify(contact),
-    //        headers: {
-    //            'Accept': 'application/json',
-    //            'Content-Type': 'application/json'
-    //        },
-    //    };
-    //    return $http(options).then(function (result) {
-    //        $location.path("/");
-    //    },
-    //    function (error) {
-    //        return error;
-    //    });
-    //};
+        contact = {
+            "GivenName": givenName, "Surname": surName, "EmailAddresses": [
+                    {
+                        "Address": email,
+                        "Name": givenName
+                    }
+            ]
+        }
+                
+        o365CorsFactory.updateContact(contact, id).then(function () {
+            $location.path("/#");
+        });
+    };
 });
 o365CorsApp.controller("ContactsDeleteController", function ($scope, $q, $http, $location, ShareData, o365CorsFactory) {
     var id = ShareData.value;
-    //deleteContact();
-    //function deleteContact() {
-    //   var options = {
-    //        url: "https://outlook.office365.com/api/v1.0/me/contacts/"+id,
-    //        method: 'DELETE',
-    //        headers: {
-    //            'Accept': 'application/json',
-    //            'Content-Type': 'application/json'
-    //        },
-    //    };
-
-    o365CorsFactory.deleteContact().then(function (id) {
+   
+    o365CorsFactory.deleteContact(id).then(function () {
         $location.path("/#");
     });
-
-    //    return $http(options).then(function (result) {
-    //        $location.path("/#");
-    //    },
-    //    function (error) {
-    //        return error;
-    //    });
-    //}
 });
 
-o365CorsApp.factory('o365CorsFactory', ['$http', function ($http) {
+o365CorsApp.factory('o365CorsFactory', ['$http' ,function ($http) {
     var factory = {};
    
     factory.getContacts = function () {
@@ -161,6 +124,7 @@ o365CorsApp.factory('o365CorsFactory', ['$http', function ($http) {
     }
 
     factory.insertContact = function (contact) {
+        alert('test')
         var options = {
             url: 'https://outlook.office365.com/api/v1.0/me/contacts',
             method: 'POST',
@@ -170,10 +134,11 @@ o365CorsApp.factory('o365CorsFactory', ['$http', function ($http) {
                 'Content-Type': 'application/json'
             },
         };
+        return $http(options);
     }
 
     factory.updateContact = function (contact,id) {
-        return options = {
+        var options = {
             url: 'https://outlook.office365.com/api/v1.0/me/contacts/'+id,
             method: 'PATCH',
             data: JSON.stringify(contact),
@@ -182,10 +147,11 @@ o365CorsApp.factory('o365CorsFactory', ['$http', function ($http) {
                 'Content-Type': 'application/json'
             },
         };
+        return $http(options);
     }
 
     factory.deleteContact = function (id) {
-        return options = {
+        var options = {
             url: 'https://outlook.office365.com/api/v1.0/me/contacts/'+id,
             method: 'DELETE',
             headers: {
@@ -193,7 +159,7 @@ o365CorsApp.factory('o365CorsFactory', ['$http', function ($http) {
                 'Content-Type': 'application/json'
             },
         };
-        
+        return $http(options);
     }
 
     return factory;
